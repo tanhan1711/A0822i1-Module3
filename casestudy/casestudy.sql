@@ -1,5 +1,5 @@
 use furama;
-
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
 -- cau1 --
 
 INSERT INTO vi_tri (ma_vi_tri, ten_vi_tri)
@@ -210,4 +210,122 @@ where  month(ngay_lam_hop_dong) between 10 and 12 and ( year(ngay_lam_hop_dong) 
 where  month(ngay_lam_hop_dong) between 1 and 6 and ( year(ngay_lam_hop_dong) = 2021));
     
     -- cau13 --
+    select ma_dich_vu_di_kem , ten_dich_vu_di_kem ,sum(so_luong) 'so_luong_dich_vu_di_kem'
+from khach_hang kh
+join hop_dong using (ma_khach_hang)
+join hop_dong_chi_tiet hdct using (ma_hop_dong)
+join dich_vu_di_kem dvdk using (ma_dich_vu_di_kem)
+group by ma_dich_vu_di_kem
+having so_luong_dich_vu_di_kem = ALL (
+select Max(s.so_luong_dich_vu_di_kem)
+from (select ma_dich_vu_di_kem , ten_dich_vu_di_kem ,sum(so_luong) 'so_luong_dich_vu_di_kem'
+from khach_hang kh
+join hop_dong using (ma_khach_hang)
+join hop_dong_chi_tiet hdct using (ma_hop_dong)
+join dich_vu_di_kem dvdk using (ma_dich_vu_di_kem)
+group by ma_dich_vu_di_kem)s);
     
+    
+    -- cau 14 --
+    select ma_hop_dong,ten_loai_dich_vu, ten_dich_vu_di_kem, count(ma_dich_vu_di_kem) 'so_lan_su_dung'
+    from hop_dong hd join dich_vu dv using(ma_dich_vu)
+    join loai_dich_vu ldv using(ma_loai_dich_vu)
+    join hop_dong_chi_tiet hdct using(ma_hop_dong)
+    join dich_vu_di_kem dvdk using(ma_dich_vu_di_kem)
+    group by ma_dich_vu_di_kem
+    having count(ma_dich_vu_di_kem) = 1;
+
+-- cau 15---
+
+select ma_nhan_vien, ho_ten,ten_trinh_do, ten_bo_phan, so_dien_thoai, dia_chi
+from nhan_vien join trinh_do using (ma_trinh_do)
+join bo_phan using (ma_bo_phan)
+join hop_dong using (ma_nhan_vien)
+where year(ngay_lam_hop_dong) between 2020 and 2021
+group by ma_nhan_vien
+having count(ma_hop_dong) <=3;
+
+-- cau 16 ---
+delete from nhan_vien nv where not exists (select * from hop_dong 
+where nv.ma_nhan_vien=ma_nhan_vien and  year (ngay_lam_hop_dong) between 2019 and 2021) ;
+
+-- cau 17 --
+UPDATE
+    khach_hang
+set
+    ma_loai_khach = 1
+WHERE
+    ma_khach_hang in (
+        select
+            t.ma_khach_hang
+        from
+            (
+                SELECT
+                    kh.ma_khach_hang,
+                    kh.ho_ten,
+                    lk.ten_loai_khach,
+                    hd.ma_hop_dong,
+                    dv.ten_dich_vu,
+                    hd.ngay_lam_hop_dong,
+                    hd.ngay_ket_thuc,
+                    (sum(dvdk.gia * hdct.so_luong) + tmp.gia_dv) tong_tien
+                FROM
+                    khach_hang kh
+                    left JOIN loai_khach lk USING (ma_loai_khach)
+                    left join hop_dong hd USING (ma_khach_hang)
+                    left join dich_vu dv USING (ma_dich_vu)
+                    left JOIN hop_dong_chi_tiet hdct USING (ma_hop_dong)
+                    left join dich_vu_di_kem dvdk USING (ma_dich_vu_di_kem)
+                    left JOIN (
+                        SELECT
+                            kh.ma_khach_hang as ma_khach_hang,
+                            sum(dv.chi_phi_thue) as gia_dv
+                        from
+                            khach_hang kh
+                            join hop_dong hd USING (ma_khach_hang)
+                            join dich_vu dv USING (ma_dich_vu)
+                        GROUP by
+                            kh.ma_khach_hang
+                    ) as tmp USING (ma_khach_hang)
+                where
+                    ten_loai_khach = 'Platinium'
+                GROUP by
+                    kh.ma_khach_hang
+                HAVING
+                    tong_tien > 1000000
+            ) t
+    );
+-- 18--
+delete khach_hang , hop_dong , hop_dong_chi_tiet from khach_hang kh join hop_dong using (ma_khach_hang)
+join hop_dong_chi_tiet using(ma_hop_dong)
+where not exists (select hd.ma_hop_dong where year(ngay_lam_hop_dong)< 2021);
+
+-- cau 19--
+update dich_vu_di_kem
+set gia = gia * 2
+where 
+ma_dich_vu_di_kem in (select dvdk.ma_dich_vu_di_kem from (select ma_dich_vu_di_kem,sum(so_luong) t from 
+dich_Vu join hop_dong using (ma_dich_vu)
+join hop_dong_chi_tiet using (ma_hop_dong)
+group by ma_dich_vu_di_kem
+having t>10) dvdk);            
+-- cau 20 --
+SELECT
+    ma_nhan_vien as id,
+    ho_ten,
+    email,
+    so_dien_thoai,
+    ngay_sinh,
+    dia_chi
+FROM
+    nhan_vien
+UNION ALL
+SELECT
+    ma_khach_hang,
+    ho_ten,
+    email,
+    so_dien_thoai,
+    ngay_sinh,
+    dia_chi
+FROM
+    khach_hang;
