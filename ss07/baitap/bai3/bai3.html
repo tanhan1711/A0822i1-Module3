@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Verdana,sans-serif;
+            font-size: 0.9em;
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            height: 100%;
+            padding: 10px;
+            color: white;
+            background-color: black;
+        }
+
+        section {
+            width: 100%;
+            height: 600px;
+            padding: 10px;
+            background-color: lightgrey;
+        }
+        main{
+            display: grid;
+            grid-template-columns: 25% 50% 25%;
+        }
+
+        article {
+            width: 100%;
+            margin: 5px;
+            padding: 10px;
+        }
+        .aside1,.aside2 {
+            width: 100%;
+            height: 600px;
+            padding: 10px;
+            background-color: yellow;
+        }
+        footer{
+            text-align: center;
+            width: 100%;
+            clear: both;
+            display: table;
+            background-color: red;
+        }
+        h2{
+            font-size: 30px;
+            text-align: left;
+        }
+        .nav1 a {
+            color: #bdc1c6;
+        }
+        .div1,.div2{
+            background-color: lightgoldenrodyellow;
+            padding: 30px;
+            width: 60%;
+            border: none ;
+            border-radius: 10px;
+            margin-left: 30px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="nav1">
+          <a href="#">Logo</a>
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Project</a>
+          <a href="#">Contact</a>
+      </ul>
+    </nav>
+</header>
+<main>
+<aside class="aside1">
+    <ul>
+        <ol><a href="#">Link</a></ol>
+        <ol><a href="#">Link</a></ol>
+        <ol><a href="#">Link</a></ol>
+    </ul>
+</aside>
+<section>
+    <h2 id="header1">Welcome</h2>
+    <article>
+        <p style="text-align: left"  ><span style="padding-left: 10px">Lorem ipsum...
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat.
+            </span></p>
+    </article>
+    <hr width="90%"/>
+    <article>
+        <h2 id="header2">Test</h2>
+        <p style="margin-left: 20px">Còn tiếp...</p>
+    </article>
+</section>
+<aside class="aside2">
+    <div class="div1">ADS</div>
+    <div class="div2">ADS</div>
+</aside>
+</main>
+<footer>
+    <p> Footer text</p>
+</footer>
+</body>
+</html>
