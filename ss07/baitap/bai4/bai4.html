@@ -2,9 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+        .nav1{
+            margin-left: 200px;
+        }
+        .a1, .a2,.a3,.a4{
+            text-align: center;
+            margin-left: 50px;
+            text-decoration: none;
+            padding: 12px;
+            color: black;
+            }
+        main{
+            display: grid;
+            grid-template-columns: 25% 75% ;
+        }
+        aside{
+
+        }
+        .i1,.i2,.i3,.i4{
+            margin-top: 10px;
+            width: 80%;
+            height:200px ;
+        }
+        h5{
+            font-size:20px;
+        }
+        p{  text-decoration: none;
+            text-align: left;
+            text-indent: 30px;
+        }
+        footer{
+            width: 100%;
+        }
+        footer p{
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-$END$
+<header>
+    <h2>Phim <span style="color: red" >Hoat Hinh</span></h2>
+</header>
+<nav class="nav1">
+    <a class="a1" href="#">Phim Hoat Hinh</a> |
+    <a class="a2" href="#">Phim Hoat Hinh Yeu Thich</a> |
+    <a class="a3" href="#">Nhan vat hoat hinh</a> |
+    <a class="a4" href="#">Gop y</a>
+    </ul>
+</nav>
+<main>
+    <aside>
+        <img class="i1" src="img/a1.jpg "   >
+        <img class="i2" src="img/a2.png">
+        <img class="i3" src="img/a3.png">
+        <img class="i4" src="img/a4.jfif">
+    </aside>
+    <section>
+        <iframe width="80%" height="500px" src="https://www.youtube.com/embed/F9rVZ-tdTEE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <article>
+            <h5>Tớ là Mari</h5>
+            <p>
+                Như đã biết, thẻ video trong HTML được dùng để tạo “trình xem video” trên nền tảng website. Để có thể tạo trình xem video này, trước hết thẻ video cần phải được sử dụng đồng bộ với thẻ source nhằm xác định chính xác tệp tin mà bạn muốn trình chiếu.
+            </p>
+        </article>
+    </section>
+</main>
+    <footer>
+        <p>2017-Thiết kế web bởi trang hoathinhvn.net</p>
+    </footer>
 </body>
 </html>
