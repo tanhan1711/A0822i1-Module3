@@ -1,4 +1,4 @@
-package com.example.bai10;
+package com.example.bai10.cau2;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
