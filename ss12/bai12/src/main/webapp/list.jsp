@@ -18,6 +18,33 @@
     <h2>
         <a href="/users?action=create">Add New User</a>
     </h2>
+    <h2>
+        <a href="/users?action=search">Search User</a>
+    </h2>
+    <div class="search">
+        <form action="/users" method="post">
+            <h2>Search List of Users</h2>
+            Search : <input type="text" name="searchCountry" placeholder="searchCountry">
+            <input type="submit" value="search" name="action">
+        </form>
+
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Country</th>
+            </tr>
+            <c:forEach var="s" items="${searchCountry}">
+                <tr>
+                    <th>${s.id}</th>
+                    <th>${s.name}</th>
+                    <th>${s.email}</th>
+                    <th>${s.country}</th>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 </center>
 <div align="center">
     <table border="1" cellpadding="5">

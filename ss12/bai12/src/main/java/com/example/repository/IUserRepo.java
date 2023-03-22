@@ -15,4 +15,5 @@ public interface IUserRepo {
     public boolean deleteUser(int id) throws SQLException;
 
     public boolean updateUser(User user) throws SQLException;
+    public User findById(String id) throws SQLException;
 }

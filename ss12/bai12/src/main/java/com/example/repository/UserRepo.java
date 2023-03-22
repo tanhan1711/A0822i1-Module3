@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRepo {
+    private static final String SEARCH_USER_SQL = "select id,name,email,country from users where country = ?";
     private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "17112000";
@@ -111,7 +112,8 @@ public class UserRepo {
     }
     public boolean updateUser(User user) throws SQLException {
         boolean rowUpdated;
-        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
             statement.setString(1, user.getName());
             statement.setString(2, user.getEmail());
             statement.setString(3, user.getCountry());
@@ -136,5 +138,23 @@ public class UserRepo {
                 }
             }
         }
+    }
+
+    public List<User> findByCountry(String country) throws SQLException {
+        Connection connection = getConnection();
+        List<User> usersList = new ArrayList<>();
+        PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_USER_SQL);
+        preparedStatement.setString(1, country);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            String email = rs.getString("email");
+            usersList.add(new User(id, name, email, country));
+
+        }
+
+        return usersList;
+
     }
 }
