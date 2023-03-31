@@ -6,12 +6,13 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRepo {
+public class UserRepo implements IUserRepo{
     private static final String SEARCH_USER_SQL = "select id,name,email,country from users where country = ?";
+    private static final String SORT_USER_SQL = "select id,name,email,country from users order by 'name' ASC ";
     private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
     private String jdbcUsername = "root";
     private String jdbcPassword = "17112000";
-    private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country) VALUES " +
+    private static final String INSERT_USERS_SQL = "INSERT INTO nhanvien" + "  (name, email, country) VALUES " +
             " (?, ?, ?);";
 
     private static final String SELECT_USER_BY_ID = "select id,name,email,country from users where id =?";
@@ -113,13 +114,13 @@ public class UserRepo {
     public boolean updateUser(User user) throws SQLException {
         boolean rowUpdated;
         try (Connection connection = getConnection();
-             PreparedStatement statement = connection.prepareStatement(UPDATE_USERS_SQL);) {
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getEmail());
-            statement.setString(3, user.getCountry());
-            statement.setInt(4, user.getId());
+             PreparedStatement preparedstatement = connection.prepareStatement(UPDATE_USERS_SQL);) {
+            preparedstatement.setString(1, user.getName());
+            preparedstatement.setString(2, user.getEmail());
+            preparedstatement.setString(3, user.getCountry());
+            preparedstatement.setInt(4, user.getId());
 
-            rowUpdated = statement.executeUpdate() > 0;
+            rowUpdated = preparedstatement.executeUpdate() > 0;
         }
         return rowUpdated;
     }
@@ -151,10 +152,25 @@ public class UserRepo {
             String name = rs.getString("name");
             String email = rs.getString("email");
             usersList.add(new User(id, name, email, country));
-
         }
-
         return usersList;
 
+    }
+
+    @Override
+    public List<User> sortByName() throws SQLException {
+        Connection connection = getConnection();
+        List<User> sortList = new ArrayList<>();
+        PreparedStatement preparedStatement = connection.prepareStatement(SORT_USER_SQL);
+        ResultSet rs = preparedStatement.executeQuery();
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            String email = rs.getString("email");
+            String country = rs.getString("country");
+
+            sortList.add(new User(id, name, email, country));
+        }
+        return sortList;
     }
 }

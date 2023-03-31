@@ -24,7 +24,7 @@
     <div class="search">
         <form action="/users" method="post">
             <h2>Search List of Users</h2>
-            Search : <input type="text" name="searchCountry" placeholder="searchCountry">
+            Search : <input type="text" name="searchCountry">
             <input type="submit" value="search" name="action">
         </form>
 
