@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trang web</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+
+        main {
+            background-color: lightgray;
+            display: grid;
+            grid-template-columns: 30% 70%;
+        }
+
+        header {
+            background-color: aquamarine;
+        }
+
+        section {
+            height: 100%;
+            width: 100%;
+        }
+
+        footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<header class="bg-light p-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <img style="width: 15% ; height: 15%" src="https://2.bp.blogspot.com/-VRB-gGzvHbo/UnC7U0uCq-I/AAAAAAAACmg/TPtpRdJVYAs/s1600/logo-dong-phuc-3.jpg">
+        <span>Ta Anh Nhan</span>
+    </div>
+</header>
+<nav class="bg-light p-3">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="Home.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarEmployee" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                Employee
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarEmployee">
+                <a class="dropdown-item" href="NhanVien.html">CreateEmployee</a>
+                <a class="dropdown-item" href="#">ShowEmployee</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarCustomer" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                Customer
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarCustomer">
+                <a class="dropdown-item" href="KhachHang.html">CreateCustomer</a>
+                <a class="dropdown-item" href="listcustomer">ShowCustomer</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarService" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                Employee
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarService">
+                <a class="dropdown-item" href="DichVu.html">CreateService</a>
+                <a class="dropdown-item" href="#">ShowService</a>
+            </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="HopDong.html">Contract</a></li>
+    </ul>
+</nav>
+<main class="d-flex">
+    <aside style="height: 100vh;" class="bg-light p-3 border-right d-flex flex-column justify-content-between">
+        <ul class="list-group">
+            <li class="list-group-item">Item One</li>
+            <li class="list-group-item">Item Two</li>
+            <li class="list-group-item">Item Three</li>
+        </ul>
+    </aside>
+    <section>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputId">Id Nhan Vien</label>
+                    <input type="text" class="form-control" id="inputId" placeholder="Id">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputName">Ten Nhan Vien</label>
+                    <input type="password" class="form-control" id="inputName" placeholder="Name">
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputViTri">Vi Tri</label>
+                <select id="inputViTri" class="form-control">
+                    <option selected>Le Tan</option>
+                    <option>Phuc Vu</option>
+                    <option>Chuyen Vien</option>
+                    <option>Giam Sat</option>
+                    <option>Quan Ly</option>
+                    <option>Giam Doc</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputTrinhDo">Trinh Do</label>
+                <select id="inputTrinhDo" class="form-control">
+                    <option selected>Trung Cap</option>
+                    <option>Cao Dang</option>
+                    <option>Dai Hoc</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputBoPhan">Bo Phan</label>
+                <select id="inputBoPhan" class="form-control">
+                    <option selected>Sale – Marketing</option>
+                    <option>Hanh Chinh</option>
+                    <option>Phuc vu</option>
+                    <option>Quan Ly</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputBirthDay">Ngay sinh</label>
+                <input type="date" class="form-control" id="inputBirthDay" >
+            </div>
+            <div class="form-group">
+                <label for="inputCard">CMND</label>
+                <input type="text" class="form-control" id="inputCard">
+            </div>
+            <div class="form-group">
+                <label for="inputLuong">Luong</label>
+                <input type="text" class="form-control" id="inputLuong">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPhone">SDT</label>
+                <input type="text" class="form-control" id="inputPhone">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="text" class="form-control" id="inputEmail" >
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Dia Chi</label>
+                <input type="text" class="form-control" id="inputAddress" >
+            </div>
+            <button type="submit" class="btn btn-primary">Them Moi</button>
+        </form>
+        <a href="Home.html">Back</a>
+    </section>
+</main>
+<footer class="bg-light p-3">
+    <p> Footer text</p>
+
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <link rel="stylesheet" href="css/md5-case.css">-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+<!--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<header>-->
+<!--    <h1>NHAN VIEN</h1>-->
+<!--</header>-->
+<!--<form>-->
+<!--    <div class="form-row">-->
+<!--        <div class="form-group col-md-6">-->
+<!--            <label for="inputId">Id Nhan Vien</label>-->
+<!--            <input type="text" class="form-control" id="inputId" placeholder="Id">-->
+<!--        </div>-->
+<!--        <div class="form-group col-md-6">-->
+<!--            <label for="inputName">Ten Nhan Vien</label>-->
+<!--            <input type="password" class="form-control" id="inputName" placeholder="Name">-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="form-group col-md-4">-->
+<!--        <label for="inputViTri">Vi Tri</label>-->
+<!--        <select id="inputViTri" class="form-control">-->
+<!--            <option selected>Le Tan</option>-->
+<!--            <option>Phuc Vu</option>-->
+<!--            <option>Chuyen Vien</option>-->
+<!--            <option>Giam Sat</option>-->
+<!--            <option>Quan Ly</option>-->
+<!--            <option>Giam Doc</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <div class="form-group col-md-4">-->
+<!--        <label for="inputTrinhDo">Trinh Do</label>-->
+<!--        <select id="inputTrinhDo" class="form-control">-->
+<!--            <option selected>Trung Cap</option>-->
+<!--            <option>Cao Dang</option>-->
+<!--            <option>Dai Hoc</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <div class="form-group col-md-4">-->
+<!--        <label for="inputBoPhan">Bo Phan</label>-->
+<!--        <select id="inputBoPhan" class="form-control">-->
+<!--            <option selected>Sale – Marketing</option>-->
+<!--            <option>Hanh Chinh</option>-->
+<!--            <option>Phuc vu</option>-->
+<!--            <option>Quan Ly</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="inputBirthDay">Ngay sinh</label>-->
+<!--        <input type="date" class="form-control" id="inputBirthDay" >-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="inputCard">CMND</label>-->
+<!--        <input type="text" class="form-control" id="inputCard">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="inputLuong">Luong</label>-->
+<!--        <input type="text" class="form-control" id="inputLuong">-->
+<!--    </div>-->
+<!--    <div class="form-group col-md-6">-->
+<!--        <label for="inputPhone">SDT</label>-->
+<!--        <input type="text" class="form-control" id="inputPhone">-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="inputEmail">Email</label>-->
+<!--        <input type="text" class="form-control" id="inputEmail" >-->
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--        <label for="inputAddress">Dia Chi</label>-->
+<!--        <input type="text" class="form-control" id="inputAddress" >-->
+<!--    </div>-->
+<!--    <button type="submit" class="btn btn-primary">Them Moi</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->

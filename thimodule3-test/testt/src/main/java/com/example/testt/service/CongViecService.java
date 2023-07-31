@@ -7,6 +7,6 @@ import java.util.List;
 public interface CongViecService {
     CongViec findById(String maCongViec);
     List<CongViec> findAll();
-
+    CongViec congviec find
 }
 

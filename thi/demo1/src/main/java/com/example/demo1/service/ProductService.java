@@ -13,5 +13,5 @@ public interface ProductService {
     public Product selectNhanVien(int id);
 
     public boolean deleteUser(int id) throws SQLException;
-    List<Product> findByTenProduct(String categoryname);
+    List<Product> findByTenProduct(String categoryname) throws SQLException;
 }

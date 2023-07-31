@@ -55,6 +55,11 @@
                 <input type="text" name="searchname" placeholder="Tìm theo tên công việc...">
                 <input type="submit" value="search" name="action">
             </form>
+            <form action="/product" method="post">
+                <h2>Tìm kiếm nhân viên</h2>
+                <input type="text" name="searchprice" placeholder="Tìm theo tên công việc...">
+                <input type="submit" value="search" name="action">
+            </form>
             <div align="center">
                 <table style="" border="1" cellpadding="5">
                     <tr>

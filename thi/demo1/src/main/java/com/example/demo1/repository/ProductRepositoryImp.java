@@ -13,13 +13,13 @@ import java.util.List;
 
 import static com.example.demo1.util.ConnectionUtils.getConnection;
 
-public class ProductRepositoryImp implements ProductRepository{
+public class ProductRepositoryImp implements ProductRepository {
     private static final String DELETE_PRODUCT_SQL = "delete from product where stt = ?;";
     private CategoryRepository categoryRepository = new CategoryRepositoryImp();
 
-        private static final String SELECT_ALL_PRODUCT = "select *\n" +
-                "from product \n" +
-                "\tjoin category on product.categoryid = category.categoryid;";
+    private static final String SELECT_ALL_PRODUCT = "select *\n" +
+            "from product \n" +
+            "\tjoin category on product.categoryid = category.categoryid;";
     private static final String INSERT_PRODUCT_SQL = "INSERT INTO product(name, price, quantity, " +
             "color, categoryid) VALUES ( ?, ?, ?, ?, ?)";
     private static final String UPDATE_PRODUCT_SQL = "update product set name = ?,price= ?, quantity =?, color =?, categoryid =? where stt = ?;";
@@ -28,6 +28,7 @@ public class ProductRepositoryImp implements ProductRepository{
     private static final String SEARCH_ALL_CATEGORYNAME = "select * \n" +
             "from product as p join category c on p.categoryid=c.categoryid\n" +
             "where categoryname like ? ";
+
     @Override
     public void add(Product product) {
         System.out.println(INSERT_PRODUCT_SQL);
@@ -74,7 +75,7 @@ public class ProductRepositoryImp implements ProductRepository{
             preparedStatement.setDouble(3, product.getQuantity());
             preparedStatement.setString(4, product.getColor());
             preparedStatement.setString(5, product.getCategory().getIdCategory());
-            preparedStatement.setInt(6,product.getId());
+            preparedStatement.setInt(6, product.getId());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
 
@@ -107,7 +108,7 @@ public class ProductRepositoryImp implements ProductRepository{
                 String color = rs.getString("color");
                 String categoryid = rs.getString("categoryid");
                 Category category = categoryRepository.findById(categoryid);
-                productList.add(new Product(id,name,price,quantity,color,category));
+                productList.add(new Product(id, name, price, quantity, color, category));
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -116,14 +117,15 @@ public class ProductRepositoryImp implements ProductRepository{
     }
 
     @Override
-    public List<Product> findByTenProduct(String categoryname) {
+    public List<Product> findByTenProduct(String categoryname) throws SQLException {
         List<Product> productList = new ArrayList<>();
         // Step 1: Establishing a Connection
         try (Connection connection = getConnection();
 
              // Step 2:Create a statement using connection object
              PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_ALL_CATEGORYNAME)
-        ) {  preparedStatement.setString(1,categoryname+"%");
+        ) {
+            preparedStatement.setString(1, categoryname + "%");
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
@@ -137,7 +139,7 @@ public class ProductRepositoryImp implements ProductRepository{
                 String color = rs.getString("color");
                 String categoryid = rs.getString("categoryid");
                 Category category = categoryRepository.findById(categoryid);
-                productList.add(new Product(id,name,price,quantity,color,category));
+                productList.add(new Product(id, name, price, quantity, color, category));
             }
         } catch (SQLException e) {
             printSQLException(e);

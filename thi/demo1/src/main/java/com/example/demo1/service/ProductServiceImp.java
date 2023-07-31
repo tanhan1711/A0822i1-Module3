@@ -36,7 +36,7 @@ public class ProductServiceImp implements ProductService{
     }
 
     @Override
-    public List<Product> findByTenProduct(String categoryname) {
+    public List<Product> findByTenProduct(String categoryname) throws SQLException {
         return repository.findByTenProduct(categoryname);
     }
 }

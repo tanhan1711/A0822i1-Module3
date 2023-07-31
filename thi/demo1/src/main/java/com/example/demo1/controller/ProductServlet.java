@@ -95,12 +95,16 @@ public class ProductServlet extends HttpServlet {
                 updateUser(request, response);
                 break;
             case "search":
-                searchByName(request, response);
+                try {
+                    searchByName(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
         }
     }
 
-    private void searchByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {String sach = request.getParameter("search_tenloaisach");
+    private void searchByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {String sach = request.getParameter("search_tenloaisach");
         String name = request.getParameter("searchname");
         List<Product>  products= productService.findByTenProduct(name);
         request.setAttribute("search_name", products);

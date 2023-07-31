@@ -9,7 +9,9 @@ public interface ProductRepository {
     void add(Product product);
     void update(Product product);
     List<Product> findAll();
-    List<Product> findByTenProduct(String categoryname);
+    List<Product> findByTenProduct(String categoryname) throws SQLException;
+
+
     public Product selectNhanVien(int id);
 
     public boolean deleteUser(int id) throws SQLException;
