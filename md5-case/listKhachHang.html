@@ -1,10 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Trang web</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -1px;
+        }
+
+        main {
+            background-color: lightgray;
+            display: grid;
+            grid-template-columns: 30% 70%;
+        }
+
+        header {
+            background-color: aquamarine;
+        }
+
+        section {
+            height: 100%;
+            width: 100%;
+        }
+
+        footer {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+<header class="bg-light p-3">
+    <div class="d-flex justify-content-between align-items-center">
+        <img style="width: 15% ; height: 15%" src="https://2.bp.blogspot.com/-VRB-gGzvHbo/UnC7U0uCq-I/AAAAAAAACmg/TPtpRdJVYAs/s1600/logo-dong-phuc-3.jpg">
+        <span>Ta Anh Nhan</span>
+    </div>
+</header>
+<nav class="bg-light p-3">
+    <ul class="nav">
+        <li class="nav-item">
+            <a class="nav-link" href="Home.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarEmployee" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                Employee
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarEmployee">
+                <a class="dropdown-item" href="NhanVien.html">CreateEmployee</a>
+                <a class="dropdown-item" href="#">ShowEmployee</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarCustomer" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                Customer
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarCustomer">
+                <a class="dropdown-item" href="KhachHang.html">CreateCustomer</a>
+                <a class="dropdown-item" href="listcustomer">ShowCustomer</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarService" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                Employee
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarService">
+                <a class="dropdown-item" href="DichVu.html">CreateService</a>
+                <a class="dropdown-item" href="#">ShowService</a>
+            </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="HopDong.html">Contract</a></li>
+    </ul>
+</nav>
+<main class="d-flex">
+    <aside style="height: 100vh;" class="bg-light p-3 border-right d-flex flex-column justify-content-between">
+        <ul class="list-group">
+            <li class="list-group-item">Item One</li>
+            <li class="list-group-item">Item Two</li>
+            <li class="list-group-item">Item Three</li>
+        </ul>
+    </aside>
+    <section>
+        <div class="row">
+            <div class="col-12">
+                <table id="service-table" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Name</th>
+                        <th>BirthDay</th>
+                        <th>CMND</th>
+                        <th>PhoneNumber</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
 
+                    <tbody>
+                    <tr>
+                        <td>AT001</td>
+                        <td>N T A</td>
+                        <td>04/02/2002</td>
+                        <td>27211235411</td>
+                        <td>09005006</td>
+                        <td>nguyenvana@example.com</td>
+                        <td>120 Ngô Quyền</td>
+                        <td>Gold</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="editKhachHang.html" class="btn btn-primary">Edit</a>
+                                <a class="btn btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>AT002</td>
+                        <td>N T B</td>
+                        <td>01/02/2004</td>
+                        <td>27211235113</td>
+                        <td>09005008</td>
+                        <td>nguyenvanb@example.com</td>
+                        <td>120 Phan Thanh</td>
+                        <td>Platinium</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="editKhachHang.html" class="btn btn-primary">Edit</a>
+                                <a class="btn btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="bg-light p-3">
+    <p> Footer text</p>
+
+</footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
